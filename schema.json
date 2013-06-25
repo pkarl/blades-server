@@ -1,0 +1,102 @@
+// player
+
+{
+	_id: "jvlahos",
+	name: "Jeff Vlahos",
+	title: "Comissioner"
+}
+
+// team
+
+{
+	_id: "losangeles",
+	name: "Los Angeles",
+	color: "#b9b9b9"
+}
+
+// game
+
+{
+	_id: 123456789,
+	game_number: 501,
+	published_date: ISODate("2013-06-22"),
+	player_one_id: "jvlahos",
+	player_one_team_id: "losangeles",
+	player_two_id: "mswartz",
+	player_two_team_id: "atlanta",
+	notes: "Mike struck the gaming machine with his dick."
+	scores: [{
+		p1: 1,
+		p2: 0
+	},{
+		p1: 0,
+		p2: 0
+	},{
+		p1: 1,
+		p2: 0
+	},{
+		p1: 0,
+		p2: 1
+	}],
+	goals_on_self: [{
+		gos_player_id: "jvlahos",
+		goals: 1
+	}],
+	fights: [{
+		fight_winner_id: "jvlahos",
+		fight_loser_id: "mswartz"
+	},{
+		fight_winner_id: "mswartz",
+		fight_loser_id: "jvlahos"
+	}]
+}
+
+// player_career_stats_index
+
+{
+	_id: "jeff_totals",
+	player_id: "jvlahos"
+	lifetime_wins: 100,
+	lifetime_losses: 4,
+	total_games: 104,
+	opponents: [
+		{
+			opponent_id: "mswartz",
+			goals_allowed_total: 2,
+			goals_allowed_avg: 1.1,
+			goals_scored: 5,
+			goals_scored_avg: 2.2,
+			ot_wins: 10,
+			ot_losses: 29,
+			fights_won: 40,
+			fights_lost: 10
+		},{
+			opponent_id: "tbottitta",
+			goals_against: 2,
+			goals_scored: 10,
+			ot_wins: 1,
+			ot_losses: 2,
+			fights_won: 4,
+			fights_lost: 1
+		}
+	]
+}
+
+// game_index
+
+{
+	_id: 2938202,
+	game_id: 292829,
+	final_score: 6,
+	player_1_total: 4,
+	player_2_total: 2,
+	winner_id: "jvlahos",
+	ot_win: false
+}
+
+// goal distro
+// goal production (per player per game)
+// streaks (win...?)
+// player v player (enemies)
+// winning percentages (% wins after scoring first, % wins on turf, % direction)
+// margin of victory (avg)
