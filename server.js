@@ -1,17 +1,32 @@
-// node modules
+// Blades Server
+
 var express = require('express'),
 	mongo = require('mongodb'),
 	_ = require('lodash');
 
-var players = require('./players'),
-	games = require('./games'),
-	teams = require('./teams');
+// Mongo
+
+var connection = require('./connection');
+
+// Blades Modules
+
+var players = require('./models/players'),
+	games = require('./models/games'),
+	teams = require('./models/teams');
+
+// Express
 
 var app = express();
 
 app.configure(function () {
     app.use(express.logger('dev'));
     app.use(express.bodyParser());
+});
+
+app.all('/*', function(req, res, next) {
+	res.header("Access-Control-Allow-Origin", "*");
+	res.header("Access-Control-Allow-Headers", "X-Requested-With");
+	next();
 });
 
 app.get('/', function(req, res) {

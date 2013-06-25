@@ -1,17 +1,4 @@
-var mongo = require('mongodb');
- 
-var Server = mongo.Server,
-	Db = mongo.Db,
-	BSON = mongo.BSONPure;
- 
-var server = new Server('localhost', 27017, {auto_reconnect: true});
-db = new Db('blades', server);
-
-db.open(function(err, db) {
-	if(!err) {
-		console.log("Connected to blades database");
-	}
-});
+var conn = require('./connection');
 
 exports.resetPlayers = function() {
  
@@ -38,11 +25,11 @@ exports.resetPlayers = function() {
 		title: ""
 	}];
 
-	db.collection('players',function(err, collection){
+	conn.db.collection('players',function(err, collection){
 		collection.remove();
 	});
  
-	db.collection('players', function(err, collection) {
+	conn.db.collection('players', function(err, collection) {
 		collection.insert(players, {safe:true}, function(err, result) {});
 	});
  
@@ -73,11 +60,11 @@ exports.resetTeams = function() {
 		color: "#888888"
 	},];
  
-	db.collection('teams',function(err, collection){
+	conn.db.collection('teams',function(err, collection){
 		collection.remove({},function(err, removed){});
 	});
  
-	db.collection('teams', function(err, collection) {
+	conn.db.collection('teams', function(err, collection) {
 		collection.insert(teams, {safe:true}, function(err, result) {});
 	});
  
@@ -119,11 +106,11 @@ exports.resetGames = function() {
 		}]
 	}];
  
-	db.collection('games',function(err, collection){
+	conn.db.collection('games',function(err, collection){
 		collection.remove({},function(err, removed){});
 	});
 
-	db.collection('games', function(err, collection) {
+	conn.db.collection('games', function(err, collection) {
 		collection.insert(games, {safe:true}, function(err, result) {});
 	});
  
